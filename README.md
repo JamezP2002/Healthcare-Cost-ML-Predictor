@@ -5,14 +5,14 @@ A data science project that explores drivers of healthcare costs and builds a mo
 ## Technologies
 - Python, Jupyter, Pandas, Scikit-learn, Matplotlib
 
-## 🚀 Getting Started
+## Getting Started
 1. Clone the repo
 2. Create a virtual environment
 3. Install dependencies:  
    ```bash
    pip install -r requirements.txt
 
-## 🔍 Key Findings from EDA
+## Key Findings from EDA
 
 - Smokers have significantly higher medical costs compared to non-smokers.
 - Age has a moderate positive correlation with charges.
@@ -20,7 +20,7 @@ A data science project that explores drivers of healthcare costs and builds a mo
 - Children and region don’t seem to have much impact.
 - Medical charges are heavily skewed, with a few very high-cost outliers.
 
-## ✅ Project Progress
+## Project Progress
 
 - [x] Dataset loaded and cleaned
 - [x] Exploratory data analysis (EDA)
@@ -29,6 +29,8 @@ A data science project that explores drivers of healthcare costs and builds a mo
 - [ ] Model evaluation
 - [ ] Streamlit app (optional)
 
-## 📓 Notebooks
+## Notebooks
 
 - [`01_eda.ipynb`](./notebooks/01_eda.ipynb) – Exploratory data analysis
+- [`02_preprocessing.ipynb`](./notebooks/02_preprocessing.ipynb) – Preprocessing work
+- [`03_modeling.ipynb`](./notebooks/03_modeling.ipynb) – Modeling work
