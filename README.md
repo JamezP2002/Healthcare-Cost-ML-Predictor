@@ -24,7 +24,7 @@ A data science project that explores drivers of healthcare costs and builds a mo
 
 - [x] Dataset loaded and cleaned
 - [x] Exploratory data analysis (EDA)
-- [ ] Feature engineering
+- [x] Feature engineering
 - [ ] Model building (linear regression, tree-based models)
 - [ ] Model evaluation
 - [ ] Streamlit app (optional)
