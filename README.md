@@ -2,6 +2,8 @@
 
 A data science project that explores drivers of healthcare costs and builds a model to predict medical charges using patient attributes.
 
+**Live Demo:** [Streamlit App](https://healthcare-cost-ml-predictor-interface.streamlit.app/)
+
 ## Tech Stack
 - **Python**, **Pandas**, **NumPy**, **Matplotlib**, **Seaborn**
 - **Scikit-learn**, **XGBoost**, **SHAP**
@@ -30,7 +32,7 @@ A data science project that explores drivers of healthcare costs and builds a mo
 - [x] Exploratory data analysis (EDA)
 - [x] Feature engineering
 - [x] Model building & evaluation (linear regression, random forest, xgboost)
-- [x] Streamlit app 
+- [x] Streamlit app (live demo in the cloud)
 
 ## Notebooks
 
