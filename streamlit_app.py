@@ -19,6 +19,7 @@ average_charge = pd.read_csv('data/insurance_cleaned.csv')['charges'].mean()
 # Application setup
 st.title("Healthcare Cost Predictor")
 st.markdown("Enter patient details below to predict their expected medical charges.")
+st.markdown("Developed by James P.")
 
 # User input
 age = st.slider('Age', 18, 100, 30)
@@ -53,6 +54,7 @@ if st.button('Predict Healthcare Cost'):
     shap_values = explainer(input_data)
 
     # Display results
+    st.write('---')
     st.success(f"Estimated Medical Charges: ${prediction:,.2f}")
 
     diff = prediction - average_charge
@@ -67,25 +69,25 @@ if st.button('Predict Healthcare Cost'):
     
     st.caption("ℹ️ Estimated annual insurance charge based on patient risk profile.")
 
-    # SHAP explanation section
-    st.subheader("Understanding Your Cost Factors:")
-    st.markdown("""
-    **What does this chart mean?**
+    with st.expander("See Explanation of Prediction", expanded=False):
+        # SHAP explanation section
+        st.subheader("Understanding Your Cost Factors:")
+        st.markdown("""
+        **What does this chart mean?**
 
-    The model starts with a base cost (around $14,226), then adjusts it based on your inputs.
+        The model starts with a base cost (around $14,226), then adjusts it based on your inputs.
 
-    - 🔵 Blue bars **lower** your predicted cost
-    - 🔴 Red bars **raise** it
-    - The farther a bar stretches, the **bigger its impact**
-    """)
-    
-    # SHAP waterfall plot
-    fig, ax = plt.subplots(figsize=(10, 10))
-    shap.plots.waterfall(shap_values[0], max_display=8, show=False)
-    st.pyplot(fig)
-    plt.clf()
+        - 🔵 Blue bars **lower** your predicted cost
+        - 🔴 Red bars **raise** it
+        - The farther a bar stretches, the **bigger its impact**
+        """)
+        
+        # SHAP waterfall plot
+        fig, ax = plt.subplots(figsize=(10, 10))
+        shap.plots.waterfall(shap_values[0], max_display=8, show=False)
+        st.pyplot(fig)
+        plt.clf()
 
-    st.markdown("**Note:** This is a predictive model and should not replace professional medical advice.")
-    st.markdown("Developed by James Petkin.")
-    
+        st.markdown("**Note:** This is a predictive model and should not replace professional medical advice.")
+        
 
