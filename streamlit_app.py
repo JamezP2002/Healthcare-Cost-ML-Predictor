@@ -6,15 +6,15 @@ import shap
 import matplotlib.pyplot as plt
 
 # Load model
-xgb_model = joblib.load('../models/xgb_model.pkl')
+xgb_model = joblib.load('models/xgb_model.pkl')
 
 # Load background data for SHAP
-background_df = pd.read_csv('../data/insurance_cleaned.csv')
+background_df = pd.read_csv('data/insurance_cleaned.csv')
 background_df = background_df.drop(columns=['charges'])
 background_sample = background_df.sample(100, random_state=42)  
 
 # Get the average of medical charges for comparison
-average_charge = pd.read_csv('../data/insurance_cleaned.csv')['charges'].mean()
+average_charge = pd.read_csv('data/insurance_cleaned.csv')['charges'].mean()
 
 # Application setup
 st.title("Healthcare Cost Predictor")
