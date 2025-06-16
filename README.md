@@ -1,9 +1,12 @@
-# Healthcare Cost Analysis and Prediction Project
+# Healthcare Cost Analysis & Predictive Modeling
 
 A data science project that explores drivers of healthcare costs and builds a model to predict medical charges using patient attributes.
 
-## Technologies
-- Python, Jupyter, Pandas, Scikit-learn, Matplotlib
+## Tech Stack
+- **Python**, **Pandas**, **NumPy**, **Matplotlib**, **Seaborn**
+- **Scikit-learn**, **XGBoost**, **SHAP**
+- **Streamlit** – interactive app 
+- Jupyter Notebooks for data exploration and modeling
 
 ## Getting Started
 1. Clone the repo
@@ -26,7 +29,7 @@ A data science project that explores drivers of healthcare costs and builds a mo
 - [x] Exploratory data analysis (EDA)
 - [x] Feature engineering
 - [x] Model building & evaluation (linear regression, random forest, xgboost)
-- [ ] Streamlit app (optional)
+- [x] Streamlit app 
 
 ## Notebooks
 
@@ -50,3 +53,13 @@ We trained and compared three different models to predict medical charges:
 - **XGBoost** slightly outperformed Random Forest and gave the most accurate predictions overall.
 
 **Final Model Choice:** **XGBoost** was selected as the final model due to its strong performance on all metrics.
+
+## Streamlit application
+The app lets users:
+- Input age, sex, BMI, region, smoker status, and children
+- Predict their **estimated annual insurance charges**
+- View a SHAP **waterfall chart** explaining the prediction
+- Compare their charge to the **average patient cost**
+
+ ## Credits
+ - Inspired by the [Medical Cost Personal Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance)
