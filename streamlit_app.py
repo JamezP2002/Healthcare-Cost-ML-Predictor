@@ -5,8 +5,10 @@ import joblib
 import shap
 import matplotlib.pyplot as plt
 
-# Load model
+# Load models
 xgb_model = joblib.load('models/xgb_model.pkl')
+rf_model = joblib.load('models/rf_model.pkl')
+lr_model = joblib.load('models/lr_model.pkl')
 
 # Load background data for SHAP
 background_df = pd.read_csv('data/insurance_cleaned.csv')
@@ -18,8 +20,10 @@ average_charge = pd.read_csv('data/insurance_cleaned.csv')['charges'].mean()
 
 # Application setup
 st.title("Healthcare Cost Predictor")
-st.markdown("Enter patient details below to predict their expected medical charges.")
-st.markdown("Developed by James P.")
+st.subheader("Estimate Your Medical Charges Based on Personal Details")
+st.markdown("This app predicts annual healthcare costs based on patient demographics and health factors.")   
+st.markdown("*Developed by James P. - [Github Repo](https://github.com/JamezP2002/Healthcare-Cost-ML-Predictor)*")
+st.write('---')
 
 # User input
 age = st.slider('Age', 18, 100, 30)
@@ -89,5 +93,35 @@ if st.button('Predict Healthcare Cost'):
         plt.clf()
 
         st.markdown("**Note:** This is a predictive model and should not replace professional medical advice.")
+
+    # Model comparison section
+    with st.expander("Compare with Other Models", expanded=False):
+        st.subheader("Model Comparison: Predicted Medical Charges")
         
+        # Predict with other models
+        preds = {
+            "XGBoost": xgb_model.predict(input_data)[0],
+            "Random Forest": rf_model.predict(input_data)[0],
+            "Linear Regression": lr_model.predict(input_data)[0]
+        }
+        
+        # Display numeric values
+        for name, value in preds.items():
+            st.markdown(f"**{name}:** ${value:,.2f}")
+
+        # Create bar chart
+        fig, ax = plt.subplots()
+        ax.bar(preds.keys(), preds.values(), color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+        ax.set_ylabel('Predicted Charges ($)')
+        ax.set_title('Prediction Comparison Across Models')
+
+        # Display chart in Streamlit
+        st.pyplot(fig)
+        plt.clf()
+
+        st.markdown("""
+        **Note:** XGBoost generally gives the most accurate predictions based on earlier testing (R² = 0.86),
+        but comparing models helps understand the variance between simpler and more complex approaches.
+        """)
+                
 
