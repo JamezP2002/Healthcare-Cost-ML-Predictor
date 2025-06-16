@@ -18,12 +18,12 @@ background_sample = background_df.sample(100, random_state=42)
 # Get the average of medical charges for comparison
 average_charge = pd.read_csv('data/insurance_cleaned.csv')['charges'].mean()
 
-# Application setup
+# Streamlit app setup
 st.title("Healthcare Cost Predictor")
-st.subheader("Estimate Your Medical Charges Based on Personal Details")
-st.markdown("This app predicts annual healthcare costs based on patient demographics and health factors.")   
-st.markdown("*Developed by James P. - [Github Repo](https://github.com/JamezP2002/Healthcare-Cost-ML-Predictor)*")
-st.write('---')
+st.subheader("Estimate Your Annual Medical Charges")
+st.markdown("Predict personalized healthcare costs based on demographics, lifestyle, and health factors using machine learning.")
+st.markdown("*Developed by James P. — [GitHub Repository](https://github.com/JamezP2002/Healthcare-Cost-ML-Predictor)*")
+st.markdown("---")
 
 # User input
 age = st.slider('Age', 18, 100, 30)
