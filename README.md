@@ -32,7 +32,7 @@ A data science project that explores drivers of healthcare costs and builds a mo
 - [x] Exploratory data analysis (EDA)
 - [x] Feature engineering
 - [x] Model building & evaluation (linear regression, random forest, xgboost)
-- [x] Streamlit app 
+- [x] Streamlit app (live demo in the cloud)
 
 ## Notebooks
 
