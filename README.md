@@ -14,6 +14,7 @@ A data science project that explores drivers of healthcare costs and builds a mo
 3. Install dependencies:  
    ```bash
    pip install -r requirements.txt
+4. Look around the notebooks or play around with the streamlit app!
 
 ## Key Findings from EDA
 
