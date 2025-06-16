@@ -97,31 +97,38 @@ if st.button('Predict Healthcare Cost'):
     # Model comparison section
     with st.expander("Compare with Other Models", expanded=False):
         st.subheader("Model Comparison: Predicted Medical Charges")
-        
+
         # Predict with other models
         preds = {
             "XGBoost": xgb_model.predict(input_data)[0],
             "Random Forest": rf_model.predict(input_data)[0],
             "Linear Regression": lr_model.predict(input_data)[0]
         }
-        
-        # Display numeric values
-        for name, value in preds.items():
-            st.markdown(f"**{name}:** ${value:,.2f}")
 
-        # Create bar chart
+        # Ranking models by prediction
+        sorted_preds = sorted(preds.items(), key=lambda x: x[1])
+        color_map = {
+            sorted_preds[0][0]: 'green',   # cheapest
+            sorted_preds[1][0]: 'gold',    # middle of the road
+            sorted_preds[2][0]: 'red'      # priciest
+        }
+
+        for name, value in preds.items():
+            color = color_map[name]
+            st.markdown(f"<span style='color:{color}'><strong>{name}:</strong> ${value:,.2f}</span>", unsafe_allow_html=True)
+
+        # Bar chart with matching colors
         fig, ax = plt.subplots()
-        ax.bar(preds.keys(), preds.values(), color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+        ax.bar(preds.keys(), preds.values(), color=[color_map[name] for name in preds.keys()])
         ax.set_ylabel('Predicted Charges ($)')
         ax.set_title('Prediction Comparison Across Models')
 
-        # Display chart in Streamlit
         st.pyplot(fig)
         plt.clf()
 
         st.markdown("""
-        **Note:** XGBoost generally gives the most accurate predictions based on earlier testing (R² = 0.86),
-        but comparing models helps understand the variance between simpler and more complex approaches.
+        **Note:** XGBoost generally provides the best performance (R² = 0.86),
+        but comparing models helps illustrate the variability across different algorithms.
         """)
                 
 
