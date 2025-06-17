@@ -1,4 +1,4 @@
-# Healthcare Cost Analysis & Predictive Modeling
+# Predicting Healthcare Costs with Machine Learning
 
 A data science project that explores drivers of healthcare costs and builds a model to predict medical charges using patient attributes.
 
